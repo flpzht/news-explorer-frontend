@@ -21,7 +21,7 @@ function Navigation() {
         Artigos salvos
       </Link>
 
-      <button className="navigation-signin" type='button'>Entrar</button>
+      <button className="navigation__signin" type='button'>Entrar</button>
 
       <button className="navigation__signout" type="button">Usuário</button>
     </nav>
