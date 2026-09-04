@@ -3,9 +3,9 @@ import '@/components/App/App.css'
 function App() {
 
   return (
-    <>
-      <h1>App</h1>
-    </>
+    <div className="app">
+      <h1 className="app__title">News Explorer</h1>
+    </div>
   )
 }
 
