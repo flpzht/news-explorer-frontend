@@ -5,7 +5,7 @@ import '@/components/Header/Header.css';
 function Header() {
   return (
     <header className="header">
-      <p className="header__logo">News Explorer</p>
+      <p className="header__logo">NewsExplorer</p>
       <Navigation />
     </header>
   );
