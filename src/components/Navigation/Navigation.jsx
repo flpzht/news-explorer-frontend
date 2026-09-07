@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import '@/components/Navigation/Navigation.css';
 
-const isLoggedIn = true; // Simulação do estado de login
+const isLoggedIn = false; // Simulação do estado de login
 
 function Navigation() {
   const location = useLocation();
@@ -28,7 +28,8 @@ function Navigation() {
       {isLoggedIn ? (
       <button className="navigation__signout" type="button">Usuário</button>
       ) : (
-      <button className="navigation__signin" type='button'>Entrar</button>
+      <button className="navigation__signin" type='button'>
+        <p className="button_text">Entrar</p></button>
       )}
     </nav>
   );
