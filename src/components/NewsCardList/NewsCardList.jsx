@@ -1,6 +1,7 @@
 import NewsCard from '@/components/NewsCard/NewsCard';
 
 import newsCardImage01 from '@/images/news-card-image01.png';
+import notFoundIcon from '@/images/not-found-image.svg';
 
 import '@/components/NewsCardList/NewsCardList.css';
 
@@ -31,7 +32,18 @@ const news = [
   },
 ];
 
+const hasNoResults = true; // Simulação de ausência de resultados
+
 function NewsCardList({ isSavedNewsPage }) {
+    if (hasNoResults && !isSavedNewsPage) {
+        return (
+            <section className="news-card-list news-card-list--no-results">
+                <img className="news-card-list__not-found-icon" src={notFoundIcon} alt="Nada encontrado" />
+                <h2 className="news-card-list__not-found-title">Nada encontrado</h2>
+                <p className="news-card-list__not-found-text">Desculpe, mas nada corresponde aos seus termos de pesquisa.</p>
+            </section>
+        );
+    }
     return (
         <section className="news-card-list">
             <ul className="news-card-list__items">
