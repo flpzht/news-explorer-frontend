@@ -73,6 +73,8 @@
   font-display: swap;
 }
 
+/* Source Sans 3 */
+
 @font-face {
   font-family: 'Source Sans 3';
   src: url('./fonts/source-sans-3-400-regular.woff2') format('woff2');
