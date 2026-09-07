@@ -3,6 +3,8 @@
 
 :root {
 
+  box-sizing: border-box;
+
   /* Colors */
   --color-white: #ffffff; /* White for background, titles and text */
   --color-black: #000000;

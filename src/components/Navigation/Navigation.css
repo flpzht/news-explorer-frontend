@@ -1,13 +1,13 @@
 .navigation {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     margin-right: 101px;
 }
 
 .navigation__link {
-    margin: 30px 42px 26px 0;
-
+    margin: 30px 42px 0 0;
+    padding-bottom: 26px;
     font-family: var(--font-roboto);
     font-size: 18px;
     font-weight: 500;
@@ -19,14 +19,42 @@
 
 .navigation__link_active {
     color: var(--color-white);
-    
-    border-bottom: 2px solid var(--color-white);
+    padding-bottom: 23px;
+    border-bottom: 3px solid var(--color-white);
 }
 
-.button_text {
+.navigation__link_inactive {
+    color: var(--color-light-black);
+    padding-bottom: 26px;
+
+}
+
+.navigation__link_saved-news-active {
+    color: var(--color-light-black);
+    padding-bottom: 23px;
+    border-bottom: 3px solid var(--color-light-black);
+}
+
+.navigation__signin {
+    margin: 19px 0 13px 0;
+
+    background: transparent;
+    border: 1px solid var(--color-white);
+    border-radius: 100px;
+    padding: 11px 11px;
+
+    cursor: pointer;
+}
+
+.navigation__signin:hover {
+    opacity: 0.6;
+}
+
+.navigation__signin-text {
+    color: var(--color-white);
     font-family: var(--font-roboto);
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 24px;
     color: var(--color-white);
 
@@ -36,19 +64,55 @@
     margin: 0;
 }
 
-.navigation__signin {
+.navigation__signout {
+    min-width: 112px;
     margin: 19px 0 13px 0;
 
-    background: transparent;
-    border: 1px solid var(--color-white);
-    border-radius: 100px;
-    padding: 12px 12px;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 
-    color: var(--color-white);
+    background: transparent;
+    border-radius: 100px;
+    padding: 11px 11px;
+
+    cursor: pointer;
+}
+
+.navigation__signout_main {
+    border: 1px solid var(--color-white);
+}
+
+.navigation__signout_saved-news {
+    border: 1px solid var(--color-light-black);
+}
+
+.navigation__signout:hover {
+    opacity: 0.6;
+}
+
+.navigation__signout-text {
     font-family: var(--font-roboto);
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 24px;
-    cursor: pointer;
+
+    text-decoration: none;
+
+    height: 24px;
+    margin: 0;
+}
+
+.navigation__signout_main-text {
+    color: var(--color-white);
+}
+
+.navigation__signout_saved-news-text {
+    color: var(--color-light-black);
+}
+
+
+.navigation__logout-icon_main {
+    color: var(--color-white);
 }
