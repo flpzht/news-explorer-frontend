@@ -31,4 +31,7 @@
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1280px;
   --breakpoint-large-desktop: 1440px;
+
+  /* Z-index */
+  --z-navbar: 100;
 }
