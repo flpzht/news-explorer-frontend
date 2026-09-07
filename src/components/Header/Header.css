@@ -3,22 +3,20 @@
     height: var(--header-height);
     position: sticky;
     top: 0;
-    z-index: var(--z-navbar);
-
-    background-color: transparent;
-    box-shadow: 0 0.2px 0px var(--color-grey-2);
+    z-index: var(--z-navbar);    
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    background-color: transparent;
+    box-shadow: 0 0.2px 0px var(--color-grey-2);
 }
 
 .header__logo {
     width: 200px;
-    height: 24px;
     object-fit: contain;
 
-    display: flex;
-    align-items: center;
     margin: 30px 0 26px 104px;
 
     font-family: var(--font-roboto-slab);
