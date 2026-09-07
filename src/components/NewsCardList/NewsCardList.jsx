@@ -32,9 +32,10 @@ const news = [
   },
 ];
 
-const hasNoResults = true; // Simulação de ausência de resultados
+const hasNoResults = false; // Simulação de ausência de resultados
 
 function NewsCardList({ isSavedNewsPage }) {
+
     if (hasNoResults && !isSavedNewsPage) {
         return (
             <section className="news-card-list news-card-list--no-results">
@@ -44,6 +45,7 @@ function NewsCardList({ isSavedNewsPage }) {
             </section>
         );
     }
+
     return (
         <section className="news-card-list">
             <ul className="news-card-list__items">
