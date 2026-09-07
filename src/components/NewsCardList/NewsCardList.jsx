@@ -31,13 +31,13 @@ const news = [
   },
 ];
 
-function NewsCardList() {
+function NewsCardList({ isSavedNewsPage }) {
     return (
         <section className="news-card-list">
             <ul className="news-card-list__items">
                 {news.map((article) => (
                     <li key={article.id} className="news-card-list__item">
-                        <NewsCard card={article} />
+                        <NewsCard card={article} isSavedNewsPage={isSavedNewsPage} />
                     </li>
                 ))}
             </ul>
