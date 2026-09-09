@@ -1,9 +1,13 @@
 @import './vendor/normalize.css';
 @import './vendor/fonts.css';
 
-:root {
-
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+:root {
 
   /* Colors */
   --color-white: #ffffff; /* White for background, titles and text */
