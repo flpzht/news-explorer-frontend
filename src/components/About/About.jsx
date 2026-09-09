@@ -5,7 +5,7 @@ import '@/components/About/About.css';
 function About() {
     return (
         <section className="about">
-            <img src={aboutPhoto} alt="Foto de uma pessoa lendo notícias" className="about__photo" />
+            <img className="about__photo" src={aboutPhoto} alt="Foto de uma pessoa lendo notícias" />
             <div className="about__content">
                 <h2 className="about__title">Sobre o autor</h2>
                 <p className="about__text">
