@@ -14,7 +14,7 @@
   --color-black: #000000;
   --color-light-black: #1a1b22; /* Light black for logo text, header text, paragraph and footer */
   --color-grey: #f2f2f2;
-  --color-light-grey: #f5f5f5;
+  --color-light-grey: #f5f6f7; /* Light grey for NewsCardList background */
   --color-light-grey-2: #e8e8e8; /* Light grey for logo, header buttons and hover vector */
   --color-grey-1: #d1d2d6; /* Medium grey for subtle backgrounds and desactivated elements */
   --color-grey-2: #c4c4c4; /* Grey for background transparent */
