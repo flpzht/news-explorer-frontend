@@ -10,6 +10,9 @@
     align-items: center;
 
     background-color: transparent;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     box-shadow: 0 0.2px 0px var(--color-grey-2);
 }
 
