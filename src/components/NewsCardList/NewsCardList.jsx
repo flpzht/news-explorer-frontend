@@ -1,3 +1,5 @@
+import { hasNoResults } from '@/utils/mockAuth.js';
+
 import NewsCard from '@/components/NewsCard/NewsCard';
 
 import newsCardImage01 from '@/images/news-card-image01.png';
@@ -31,8 +33,6 @@ const news = [
     urlToImage: newsCardImage01,
   },
 ];
-
-const hasNoResults = true; // Simulação de ausência de resultados
 
 function NewsCardList({ isSavedNewsPage }) {
 
