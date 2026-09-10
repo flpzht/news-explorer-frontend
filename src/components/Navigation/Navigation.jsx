@@ -1,11 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 
+import { isLoggedIn } from '@/utils/mockAuth.js'; // Simulação do estado de login
+
 import logoutIconMain from '@/images/logout-icon-main.svg';
 import logoutIconSavedNews from '@/images/logout-icon-saved-news.svg';
 
 import '@/components/Navigation/Navigation.css';
-
-const isLoggedIn = true; // Simulação do estado de login
 
 function Navigation() {
   const location = useLocation();
