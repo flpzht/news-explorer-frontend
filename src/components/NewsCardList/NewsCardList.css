@@ -38,16 +38,7 @@
 }
 
 .news-card-list__item {
-    max-width: 400px;
-    max-height: 576px;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: var(--color-white);
-}
-
-.news-card-list__item:hover {
-    cursor: pointer;
-    box-shadow: 1px 1px 10px 0 var(--color-box-shadow-1), 1px 1px 10px 0 var(--color-box-shadow-2);
+    display: flex;
 }
 
 .news-card-list__button {
