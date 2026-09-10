@@ -32,7 +32,7 @@ const news = [
   },
 ];
 
-const hasNoResults = false; // Simulação de ausência de resultados
+const hasNoResults = true; // Simulação de ausência de resultados
 
 function NewsCardList({ isSavedNewsPage }) {
 
