@@ -3,7 +3,7 @@ import { useState } from 'react';
 import '@/components/PopupWithForm/PopupWithForm.css';
 
 function PopupWithForm({ isOpen, onClose }) {
-    const [mode, setMode] = useState('login');
+    const [mode, setMode] = useState('success');
 
     function handleClose() {
         setMode('login');
@@ -24,7 +24,7 @@ function PopupWithForm({ isOpen, onClose }) {
 
                     {mode === 'success' ? (
                         <>
-                            <h2 className="popup-with-form__title">Cadastro concluído com sucesso!</h2>
+                            <h2 className="popup-with-form__title popup-with-form__title_type_success">Cadastro concluído com sucesso!</h2>
                             <button className="popup-with-form__switch-link popup-with-form__switch-link_type_success" type='button' onClick={() => setMode('login')}>Entrar</button>
                         </>
                     ) : (
