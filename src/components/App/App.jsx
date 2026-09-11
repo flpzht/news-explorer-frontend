@@ -12,56 +12,28 @@ import '@/components/App/App.css'
 function App() {
 
   return (
-    <div className="app">
+    <>
       <Routes>
+
         <Route path="/" element={
           <>
             <Header />
-
             <Main />
-
-            <PopupWithForm
-              title="Entrar"
-              buttonText="Entrar"
-              switchText="ou"
-              switchLinkText="Inscreva-se"
-            >
-              <label className="popup-with-form__field">
-                Email
-                <input
-                  className="popup-with-form__input"
-                  type="email"
-                  name="email"
-                  placeholder="Insira e-mail"
-                />
-              </label>
-
-              <label className="popup-with-form__field">
-                Senha
-                <input
-                  className="popup-with-form__input"
-                  type="password"
-                  name="password"
-                  placeholder="Insira a senha"
-                />
-              </label>
-            </PopupWithForm>
-
-          </>}
-        />
-
+            <PopupWithForm />
+          </>
+        } />
 
         <Route path="/saved-news" element={
           <>
             <SavedNewsHeader />
             <SavedNews />
-          </>}
-        />
+          </>
+        } />
+
       </Routes>
 
       <Footer />
-
-    </div>
+    </>
   )
 }
 
