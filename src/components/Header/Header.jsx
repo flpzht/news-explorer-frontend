@@ -2,11 +2,11 @@ import Navigation from '@/components/Navigation/Navigation';
 
 import '@/components/Header/Header.css';
 
-function Header() {
+function Header({onOpenPopup}) {
   return (
     <header className="header">
       <p className="header__logo">NewsExplorer</p>
-      <Navigation />
+      <Navigation onOpenPopup={onOpenPopup}/>
     </header>
   );
 }
