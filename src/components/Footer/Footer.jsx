@@ -7,19 +7,15 @@ function Footer() {
 
     return (
         <footer className="footer">
-            <p>&copy; {currentYear} Supersite, desenvolvido pela News API</p>
+            <p className="footer__copyright">&copy; {currentYear} Supersite, desenvolvido pela News API</p>
 
             <div className="footer__links">
-                <Link to="/" className="footer__link">Início</Link>
-                <a href="https://tripleten.com.br/" className="footer__link" target="_blank" rel="noopener noreferrer">
+                <a className="footer__link" href="#">Início</a>
+                <a className="footer__link" href="https://tripleten.com.br/" target="_blank" rel="noopener noreferrer">
                     Tripleten
                 </a>
-                <a href="https://github.com/flpzht/news-explorer-frontend" className="footer__icon-link footer__icon-link_type-github" target="_blank" rel="noopener noreferrer" aria-label='GitHub'>
-                    {/* Ícone direto no style */}
-                </a>
-                <a href="https://www.linkedin.com/in/felipecarvalhodesouzabarros/" className="footer__icon-link footer__icon-link_type-linkedin" target="_blank" rel="noopener noreferrer" aria-label='LinkedIn'>
-                    {/* Ícone direto no style */}
-                </a>
+                <a className="footer__icon-link footer__icon-link_type-github" href="https://github.com/flpzht/news-explorer-frontend" target="_blank" rel="noopener noreferrer" aria-label='GitHub'></a>
+                <a className="footer__icon-link footer__icon-link_type-linkedin" href="https://www.linkedin.com/in/felipecarvalhodesouzabarros/" target="_blank" rel="noopener noreferrer" aria-label='LinkedIn'></a>
             </div>
         </footer>
     );
