@@ -7,7 +7,7 @@ import logoutIconSavedNews from '@/images/logout-icon-saved-news.svg';
 
 import '@/components/Navigation/Navigation.css';
 
-function Navigation() {
+function Navigation({ onOpenPopup }) {
   const location = useLocation();
 
   return (
@@ -34,7 +34,7 @@ function Navigation() {
         <img className="navigation__logout-icon_main" src={location.pathname === '/' ? logoutIconMain : logoutIconSavedNews} alt="Sair" />    
       </button>  
       ) : (
-      <button className="navigation__signin" type='button'>
+      <button className="navigation__signin" type='button' onClick={onOpenPopup}>
         <p className="navigation__signin-text">Entrar</p>
         </button>
       )}
