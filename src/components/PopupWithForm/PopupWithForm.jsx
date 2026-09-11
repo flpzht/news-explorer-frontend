@@ -3,7 +3,7 @@ import { useState } from 'react';
 import '@/components/PopupWithForm/PopupWithForm.css';
 
 function PopupWithForm({ isOpen, onClose }) {
-    const [mode, setMode] = useState('success');
+    const [mode, setMode] = useState('login');
 
     function handleClose() {
         setMode('login');
