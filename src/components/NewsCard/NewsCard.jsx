@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { isLoggedIn } from '@/utils/mockAuth.js'; // Simulação do estado de login
 
 import '@/components/NewsCard/NewsCard.css';
 
 function NewsCard({ card, isSavedNewsPage }) {
+    const location = useLocation();
     
     const [isSaved, setIsSaved] = useState(false);
 
@@ -41,10 +43,14 @@ function NewsCard({ card, isSavedNewsPage }) {
                 onClick={handleSaveClick}
                 type="button" aria-label='Salvar artigo'>                    
                 </button>
+
                 {!isLoggedIn && (
                 <span className="news-card__tooltip">Sign in to save articles</span>
                 )}
+                {location.pathname === '/saved-news' ?
                 <span className="news-card__key-word">KeyWord</span>
+                : ''}
+                
                 </div>
             )}
 
