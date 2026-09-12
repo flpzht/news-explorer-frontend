@@ -47,10 +47,6 @@ function NewsCard({ card, isSavedNewsPage }) {
                 {!isLoggedIn && (
                 <span className="news-card__tooltip">Sign in to save articles</span>
                 )}
-                {location.pathname === '/saved-news' ?
-                <span className="news-card__key-word">KeyWord</span>
-                : ''}
-                
                 </div>
             )}
 
