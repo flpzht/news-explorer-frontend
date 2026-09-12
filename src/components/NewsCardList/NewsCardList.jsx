@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import { hasNoResults } from '@/utils/mockAuth.js';
 
 import NewsCard from '@/components/NewsCard/NewsCard';
@@ -35,6 +37,7 @@ const news = [
 ];
 
 function NewsCardList({ isSavedNewsPage }) {
+    const location = useLocation();
 
     if (hasNoResults && !isSavedNewsPage) {
         return (
