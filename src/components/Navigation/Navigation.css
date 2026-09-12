@@ -81,14 +81,18 @@
 }
 
 .navigation__signout_main {
-    border: 1px solid var(--color-white);
+    border: 1px solid var(--color-grey-3);
+}
+
+.navigation__signout_main:hover {
+    border-color: var(--color-white);
 }
 
 .navigation__signout_saved-news {
     border: 1px solid var(--color-grey-1);
 }
 
-.navigation__signout:hover {
+.navigation__signout_saved-news:hover {
     border-color: var(--color-light-black);
 }
 
