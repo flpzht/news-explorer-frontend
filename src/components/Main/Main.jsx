@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import SearchForm from '@/components/SearchForm/SearchForm';
 import Preloader from '@/components/Preloader/Preloader';
@@ -9,20 +9,26 @@ import '@/components/Main/Main.css';
 
 function Main() {
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [searchStatus, setSearchStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'empty'
 
-    useEffect(() => {
-        // Simulação de carregamento de dados
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 1000); // Simula um carregamento de 2 segundos
-        return () => clearTimeout(timer);
-    }, []);
+    // TODO: simulação temporária. Na Fase 1.2, isso vira uma chamada real à News API.
+    function handleSearch(query) {
+        setSearchStatus('loading');
+
+        setTimeout(() => {
+            const isEmpty = query.trim() === '' || query.toLowerCase().includes('vazio');
+            setSearchStatus(isEmpty ? 'empty' : 'success');
+        }, 1500);
+    }
+
 
     return (
         <main className="main">
-            <SearchForm />
-            {isLoading ? <Preloader /> : <NewsCardList />}
+            <SearchForm onSearch={handleSearch} />
+            {searchStatus === 'loading' && <Preloader />}
+            {(searchStatus === 'success' || searchStatus === 'empty') && (
+                <NewsCardList searchStatus={searchStatus} />
+            )}
             <About />
         </main>
     );
