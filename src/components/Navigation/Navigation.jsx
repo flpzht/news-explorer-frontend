@@ -29,14 +29,16 @@ function Navigation({ onOpenPopup }) {
       )}
 
       {isLoggedIn ? (
-      <button className={`navigation__signout ${location.pathname === '/' ? 'navigation__signout_main' : 'navigation__signout_saved-news'}`} type="button">
-        <p className={`navigation__signout-text ${location.pathname === '/' ? 'navigation__signout_main-text' : 'navigation__signout_saved-news-text'}`}>Elise</p>
-        <img className="navigation__logout-icon_main" src={location.pathname === '/' ? logoutIconMain : logoutIconSavedNews} alt="Sair" />    
-      </button>  
-      ) : (
-      <button className="navigation__signin" type='button' onClick={onOpenPopup}>
-        <p className="navigation__signin-text">Entrar</p>
+        <button className={`navigation__signout ${location.pathname === '/' ? 'navigation__signout_main' : 'navigation__signout_saved-news'}`} type="button">
+          <p className={`navigation__signout-text ${location.pathname === '/' ? 'navigation__signout_main-text' : 'navigation__signout_saved-news-text'}`}>Elise</p>
+          <img className="navigation__logout-icon_main" src={location.pathname === '/' ? logoutIconMain : logoutIconSavedNews} alt="Sair" />
         </button>
+      ) : (
+        location.pathname === '/' && (
+          <button className="navigation__signin" type='button' onClick={onOpenPopup}>
+            <p className="navigation__signin-text">Entrar</p>
+          </button>
+        )
       )}
     </nav>
   );
