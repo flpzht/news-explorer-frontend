@@ -1,13 +1,10 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import { isLoggedIn } from '@/utils/mockAuth.js'; // Simulação do estado de login
 
 import '@/components/NewsCard/NewsCard.css';
 
 function NewsCard({ card, isSavedNewsPage }) {
-    const location = useLocation();
-    
     const [isSaved, setIsSaved] = useState(false);
 
     function handleSaveClick() {
@@ -30,23 +27,23 @@ function NewsCard({ card, isSavedNewsPage }) {
             </div>
 
             {isSavedNewsPage ? (
-                <div className="news-card__button-content">                    
-                <button className="news-card__button news-card__button_remove" type='button' aria-label='Remover dos salvos'>                    
-                </button>
-                <span className="news-card__tooltip">Remove from saved</span>
-                <span className="news-card__key-word">KeyWord</span>
+                <div className="news-card__button-content">
+                    <button className="news-card__button news-card__button_remove" type='button' aria-label='Remover dos salvos'>
+                    </button>
+                    <span className="news-card__tooltip">Remove from saved</span>
+                    <span className="news-card__key-word">KeyWord</span>
                 </div>
             ) : (
                 <div className="news-card__button-content">
-                
-                <button className={`news-card__button news-card__button_bookmark ${isLoggedIn && isSaved ? 'news-card__button_bookmark_active' : ''}`}
-                onClick={handleSaveClick}
-                type="button" aria-label='Salvar artigo'>                    
-                </button>
 
-                {!isLoggedIn && (
-                <span className="news-card__tooltip">Sign in to save articles</span>
-                )}
+                    <button className={`news-card__button news-card__button_bookmark ${isLoggedIn && isSaved ? 'news-card__button_bookmark_active' : ''}`}
+                        onClick={handleSaveClick}
+                        type="button" aria-label='Salvar artigo'>
+                    </button>
+
+                    {!isLoggedIn && (
+                        <span className="news-card__tooltip">Sign in to save articles</span>
+                    )}
                 </div>
             )}
 
