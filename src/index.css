@@ -44,5 +44,6 @@
   --footer-height: 50px;
 
   /* Z-index */
-  --z-navbar: 100;
+  --z-navbar: 10;
+  --z-modal: 1000;
 }
