@@ -3,17 +3,16 @@
     height: var(--header-height);
     position: sticky;
     top: 0;
-    z-index: var(--z-navbar);    
-    
+    z-index: var(--z-navbar);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    background-color: transparent;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    box-shadow: 0 0.2px 0px var(--color-grey-2);
+
 }
 
 .header__logo {
@@ -27,4 +26,14 @@
     font-weight: 700;
     line-height: 24px;
     color: var(--color-white);
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        height: 66px;
+    }
+
+    .header__logo {
+        margin-left: 42px;
+    }
 }
