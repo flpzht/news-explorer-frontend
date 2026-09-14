@@ -11,7 +11,7 @@ const news = [
     {
         id: 1,
         source: 'treehugger',
-        title: 'Todo mundo precisa de um "Lugar Especial para Sentar" especial na naturezaza',
+        title: 'Todo mundo precisa de um "Lugar Especial para Sentar" especial na natureza',
         description: 'Desde que li o influente livro de Richard Louv, "O Último Filho na Floresta", a ideia de ter um "lugar para sentar" especial me pegou de jeito. This advice, which Louv attributes to natureza...',
         publishedAt: '4 de novembro de 2020',
         urlToImage: newsCardImage01,
