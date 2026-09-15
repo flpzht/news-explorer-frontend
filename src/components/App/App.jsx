@@ -23,7 +23,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="page">
       <Routes>
 
         <Route path="/" element={
@@ -44,7 +44,7 @@ function App() {
       </Routes>
 
       <Footer />
-    </>
+    </div>
   )
 }
 
