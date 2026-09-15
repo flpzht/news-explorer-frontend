@@ -1,6 +1,7 @@
 .news-card-list {
     width: 100%;
-
+    height: auto;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +9,6 @@
 }
 
 .news-card-list__container {
-    height: 100%;
     margin: 78px 0 0 0;
     padding: 0 104px;
 
