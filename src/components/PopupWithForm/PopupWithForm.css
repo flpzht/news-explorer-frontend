@@ -198,3 +198,29 @@
 .popup-with-form__switch-link:hover {
     opacity: 0.6;
 }
+
+@media screen and (max-width: 480px) {
+    .popup-with-form__overlay {
+        align-items: flex-start;
+        padding-top: 56px;
+    }
+    .popup-with-form__container {
+        max-width: 480px;
+        max-height: 560px;
+        padding: 17px  16px 32px;
+    }
+    
+    .popup-with-form__close-button {
+        top: -46px;
+        right: 16px;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .popup-with-form__container {
+        max-width: 320px;
+        padding: 17px  16px 32px;
+    }
+}
