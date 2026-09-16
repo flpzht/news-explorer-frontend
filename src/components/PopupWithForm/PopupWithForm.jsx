@@ -18,7 +18,7 @@ function PopupWithForm({ isOpen, onClose }) {
 
     return (
         <div className="popup-with-form">
-            <div className="popup-with-form__overlay" onClick={handleClose}>
+            <div className="popup-with-form__overlay">
                 <div className="popup-with-form__container">
                     <button className="popup-with-form__close-button" type="button" aria-label="Fechar" onClick={handleClose} />
 
