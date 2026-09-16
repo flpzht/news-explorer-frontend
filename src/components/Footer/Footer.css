@@ -6,13 +6,16 @@
     padding: 0 104px;
 
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
 
     background-color: var(--color-white);
 }
 
 .footer__copyright {
+    width: 100%;
     margin: 0;
     font-family: var(--font-roboto);
     font-size: 16px;
@@ -23,9 +26,9 @@
 
 .footer__links {
     margin: 0;
-
     display: flex;
-    gap: 24px;
+    align-items: center;
+    gap: 40px;
 }
 
 .footer__link {
@@ -35,6 +38,13 @@
     line-height: 24px;
     color: var(--color-light-black);
     text-decoration: none;
+}
+
+.footer__icons {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
 .footer__icon-link {
@@ -53,9 +63,59 @@
     background-image: url('../../images/linkedin-icon.svg');
 }
 
+@media screen and (max-width: 1250px) {
+    .footer {
+        padding: 0 80px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .footer {
         height: 64px;
         padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer {
+        height: 176px;
+        padding: 20px 40px 22px;
+        gap: 16px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "links icons"            
+            "copyright copyright";        
+    }
+
+    .footer__copyright {
+        grid-area: copyright;
+        text-align: center;
+        font-size: 13px;
+        line-height: 22px;
+    }
+
+    .footer__links {
+        grid-area: links;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 24px;
+        align-self: flex-start;
+    }
+
+    .footer__icons {
+        grid-area: icons;
+        flex-direction: row;
+        align-self: flex-start;
+        justify-content: flex-end;
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer {
+        padding: 20px 16px 22px;
     }
 }
