@@ -33,7 +33,7 @@
         height: 66px;
     }
     .saved-news-header__logo {
-        margin-left:40px;
+        margin: 22px 0 20px 40px;
     }
 }
 
@@ -43,5 +43,8 @@
     }
     .saved-news-header__logo {
         margin: 16px 0 16px 16px;
+
+        font-size: 16px;
+        line-height: 24px;
     }
 }
