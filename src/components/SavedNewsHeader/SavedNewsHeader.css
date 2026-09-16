@@ -16,7 +16,7 @@
 }
 
 .saved-news-header__logo {
-    width: 200px;
+    width: 100%;
     object-fit: contain;
 
     margin: 30px 0 26px 104px;
@@ -34,5 +34,14 @@
     }
     .saved-news-header__logo {
         margin-left:40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .saved-news-header {
+        height: 56px;
+    }
+    .saved-news-header__logo {
+        margin: 16px 0 16px 16px;
     }
 }
