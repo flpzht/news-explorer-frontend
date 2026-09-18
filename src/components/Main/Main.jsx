@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { searchNews } from '@/utils/NewsApi';
+
 import SearchForm from '@/components/SearchForm/SearchForm';
 import Preloader from '@/components/Preloader/Preloader';
 import NewsCardList from '@/components/NewsCardList/NewsCardList';
@@ -8,17 +10,31 @@ import About from '@/components/About/About';
 import '@/components/Main/Main.css';
 
 function Main() {
-
     const [searchStatus, setSearchStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'empty'
+    const [articles, setArticles] = useState([]);
+    const [error, setError] = useState('');
 
-    // TODO: simulação temporária. Na Fase 1.2, isso vira uma chamada real à News API.
-    function handleSearch(query) {
+    async function handleSearch(query) {
         setSearchStatus('loading');
+        setError('');
 
-        setTimeout(() => {
-            const isEmpty = query.trim() === '' || query.toLowerCase().includes('vazio');
-            setSearchStatus(isEmpty ? 'empty' : 'success');
-        }, 1500);
+        try {
+            const data = await searchNews(query);
+            
+            if(data.articles.length === 0) {
+                setSearchStatus('empty');
+                setArticles([]);
+                return;
+            }
+
+            setArticles(data.articles);
+            setSearchStatus('success');
+
+        } catch (err) {
+            console.error(err);
+            setError('Desculpe, algo deu errado durante a solicitação. Pode haver um problema de conexão ou o servidor pode estar inativo. Por favor, tente novamente mais tarde.');
+            setSearchStatus('error');
+        }
     }
 
 
@@ -26,8 +42,9 @@ function Main() {
         <main className="main">
             <SearchForm onSearch={handleSearch} />
             {searchStatus === 'loading' && <Preloader />}
+            {searchStatus === 'error' && <p className="main__error">{error}</p>}
             {(searchStatus === 'success' || searchStatus === 'empty') && (
-                <NewsCardList searchStatus={searchStatus} />
+                <NewsCardList searchStatus={searchStatus} articles={articles} />
             )}
             <About />
         </main>
