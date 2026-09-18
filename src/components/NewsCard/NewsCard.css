@@ -3,12 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     
     width: 100%;
     max-width: 400px;
     height: 576px;
     border-radius: 16px;
-    overflow: hidden;
+    
     background-color: var(--color-white);
 }
 
@@ -23,7 +24,7 @@
     width: 100%;
     max-width: 400px;
     max-height: 272px;
-    
+    border-radius: 16px 16px 0 0;
     object-fit: cover;
 }
 
@@ -296,6 +297,7 @@
         height: 100%;
         max-width: 288px;
         height: 440px;
+        margin: 0 auto;
     }
 
     .news-card__image {
