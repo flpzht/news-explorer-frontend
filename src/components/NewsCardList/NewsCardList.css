@@ -44,10 +44,8 @@
 }
 
 .news-card-list__item {
-    display: flex;
-    width: 100%;
-    justify-content: center;
     margin: 0;
+    padding: 0;
 }
 
 .news-card-list__button {
