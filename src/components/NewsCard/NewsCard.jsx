@@ -4,6 +4,17 @@ import { isLoggedIn } from '@/utils/mockAuth.js'; // Simulação do estado de lo
 
 import '@/components/NewsCard/NewsCard.css';
 
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('pt-BR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+}
+
+
 function NewsCard({ card, isSavedNewsPage }) {
     const [isSaved, setIsSaved] = useState(false);
 
@@ -16,14 +27,14 @@ function NewsCard({ card, isSavedNewsPage }) {
             <img className="news-card__image" src={card.urlToImage} alt={card.title} />
 
             <div className="news-card__container">
-                <p className="news-card__date">{card.publishedAt}</p>
+                <p className="news-card__date">{formatDate(card.publishedAt)}</p>
 
                 <div className="news-card__container_content">
                     <h3 className="news-card__title">{card.title}</h3>
                     <p className="news-card__description">{card.description}</p>
                 </div>
 
-                <p className="news-card__source">{card.source}</p>
+                <p className="news-card__source">{card.source?.name}</p>
             </div>
 
             {isSavedNewsPage ? (
