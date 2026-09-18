@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+import { SavedArticlesProvider } from '@/contexts/SavedArticlesContext';
+
 import Header from '@/components/Header/Header';
 import SavedNewsHeader from '@/components/SavedNewsHeader/SavedNewsHeader';
 import Main from '@/components/Main/Main';
@@ -23,6 +25,7 @@ function App() {
   }
 
   return (
+    <SavedArticlesProvider>
     <div className="page">
       <Routes>
 
@@ -45,6 +48,7 @@ function App() {
 
       <Footer />
     </div>
+    </SavedArticlesProvider>
   )
 }
 
