@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { searchNews } from '@/utils/NewsApi';
+import { getSearchHistory, getSearchHistoryFromStorage } from '@/utils/localStorage';
 
 import SearchForm from '@/components/SearchForm/SearchForm';
 import Preloader from '@/components/Preloader/Preloader';
@@ -14,6 +15,16 @@ function Main() {
     const [articles, setArticles] = useState([]);
     const [error, setError] = useState('');
 
+
+    useEffect(() => {
+        const searchHistory = getSearchHistoryFromStorage();
+        if(searchHistory) {
+
+            setArticles(searchHistory.articles);
+            setSearchStatus(searchHistory.articles.length === 0 ? 'empty' : 'success');
+        }
+    }, []);
+
     async function handleSearch(query) {
         setSearchStatus('loading');
         setError('');
@@ -24,11 +35,13 @@ function Main() {
             if(data.articles.length === 0) {
                 setSearchStatus('empty');
                 setArticles([]);
+                getSearchHistory(query, []);
                 return;
             }
 
             setArticles(data.articles);
             setSearchStatus('success');
+            getSearchHistory(query, data.articles);
 
         } catch (err) {
             console.error(err);
