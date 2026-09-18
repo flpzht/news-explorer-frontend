@@ -88,6 +88,7 @@
 
 .navigation__link_inactive {
     color: var(--color-light-black);
+    padding: 30px 0 26px 0;
 
 }
 
