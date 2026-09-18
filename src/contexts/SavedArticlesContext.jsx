@@ -24,17 +24,22 @@ export function SavedArticlesProvider({ children }) {
 
   function saveArticle(article, keyword) {
     // TODO Fase 2: substituir por chamada real POST /articles à API personalizada
-    setSavedArticles((prev) => [...prev, { ...article, keyword }]);
-  }
+    setSavedArticles((prev) => {
+      if (prev.some((saved) => saved.url === article.url)) {
+      return prev;
+    }
+      return [...prev, { ...article, keyword }];
+  });
+}
 
-  function removeArticle(article) {
-    // TODO Fase 2: substituir por chamada real DELETE /articles/:id à API personalizada
-    setSavedArticles((prev) => prev.filter((saved) => saved.url !== article.url));
-  }
+function removeArticle(article) {
+  // TODO Fase 2: substituir por chamada real DELETE /articles/:id à API personalizada
+  setSavedArticles((prev) => prev.filter((saved) => saved.url !== article.url));
+}
 
-  return (
-    <SavedArticlesContext.Provider value={{ savedArticles, isArticleSaved, saveArticle, removeArticle }}>
-      {children}
-    </SavedArticlesContext.Provider>
-  );
+return (
+  <SavedArticlesContext.Provider value={{ savedArticles, isArticleSaved, saveArticle, removeArticle }}>
+    {children}
+  </SavedArticlesContext.Provider>
+);
 }
