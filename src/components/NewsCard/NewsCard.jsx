@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import { isLoggedIn } from '@/utils/mockAuth.js'; // Simulação do estado de login
 import { SavedArticlesContext } from '@/contexts/SavedArticlesContext.jsx';
+import brokeImage from '@/images/broke-image.png';
 
 import '@/components/NewsCard/NewsCard.css';
 
@@ -32,14 +33,14 @@ function NewsCard({ card, isSavedNewsPage, query }) {
 
   return (
     <article className="news-card">
-      <img className="news-card__image" src={card.urlToImage} alt={card.title} />
+      <img className="news-card__image" src={card.urlToImage || brokeImage} alt={card.title} />
 
       <div className="news-card__container">
         <p className="news-card__date">{formatDate(card.publishedAt)}</p>
 
         <div className="news-card__container_content">
           <h3 className="news-card__title">{card.title}</h3>
-          <p className="news-card__description">{card.description}</p>
+          <p className="news-card__description">{card.description || 'Descrição não disponível'}</p>
         </div>
 
         <p className="news-card__source">{card.source?.name}</p>
