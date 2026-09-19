@@ -57,4 +57,5 @@ Este repositório está em desenvolvimento ativo como parte do projeto final do 
 ## Autor
 
 Felipe Carvalho
+
 [GitHub](https://github.com/flpzht) · [LinkedIn](https://www.linkedin.com/in/felipecarvalhodesouzabarros/)
