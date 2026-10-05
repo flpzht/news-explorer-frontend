@@ -1,22 +1,31 @@
-import aboutPhoto from '@/images/about-photo.svg';
+import AboutAnimation from '@/components/AboutAnimation/AboutAnimation';
 
 import '@/components/About/About.css';
 
 function About() {
     return (
         <section className="about">
-            <div className="about__container">
-                <img className="about__photo" src={aboutPhoto} alt="Foto de uma pessoa lendo notícias" />
+            <div className="about__container">                
+                <div className="about__photo">
+                    <AboutAnimation />
+                </div>
                 <div className="about__content">
                     <h2 className="about__title">Sobre o autor</h2>
                     <p className="about__text">
-                        Esse bloco descreve o autor do projeto. Aqui você deve indicar seu nome,
-                        o que você faz e quais tecnologias de desenvolvedor você conhece.
+                        Economista de formação, construí minha trajetória profissional analisando dados,
+                        otimizando processos em FP&A/Controladoria e gerando inteligência de negócios (BI).
+                        Essa vivência me deu uma base sólida para resolver problemas complexos e entender o impacto real da tecnologia no negócio.
                     </p>
                     <p className="about__text">
-                        Você também pode falar sobre sua experiência com o Practicum, o que
-                        aprendeu lá e como pode ajudar clientes em potencial.
+                        Hoje, canalizo essa capacidade analítica para a engenharia de software, construindo soluções completas no ecossistema Web.
+                        O que estou construindo e estudando:
                     </p>
+                        <ul className="about__list">
+                            <li><strong>Front-end:</strong> Interfaces modernas, responsivas e acessíveis com React, JavaScript (ES6+) e CSS3.</li>
+                            <li><strong>Back-end:</strong> APIs e serviços com Node.js e arquitetura limpa.</li>
+                            <li><strong>Boas práticas:</strong> Clean Code, versionamento estruturado com Git e código escalável.</li>
+                        </ul>
+
                 </div>
             </div>
         </section>
