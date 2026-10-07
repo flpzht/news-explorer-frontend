@@ -4,7 +4,7 @@ import { useFormWithValidation } from '@/hooks/useFormWithValidation';
 
 import PopupWithForm from '@/components/PopupWithForm/PopupWithForm';
 
-function Register({ isOpen, onClose, onSwitch }) {
+function Register({ isOpen, onClose, onSwitch, onRegister, serverError }) {
   const { values, errors, isValid, handleChange, resetForm } = useFormWithValidation();
 
   useEffect(() => {
@@ -13,6 +13,7 @@ function Register({ isOpen, onClose, onSwitch }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    onRegister(values);
   }
 
   return (
@@ -25,6 +26,7 @@ function Register({ isOpen, onClose, onSwitch }) {
       onSubmit={handleSubmit}
       onClose={onClose}
       onSwitch={onSwitch}
+      serverError={serverError}
     >
       <label className="popup-with-form__field"> E-mail
         <input

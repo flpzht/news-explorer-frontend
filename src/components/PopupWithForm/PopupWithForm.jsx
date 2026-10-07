@@ -8,6 +8,7 @@ function PopupWithForm({
   switchText,
   isOpen,
   isValid,
+  serverError,
   onSubmit,
   onClose,
   onSwitch,
@@ -27,6 +28,8 @@ function PopupWithForm({
 
           <form className="popup-with-form__form" name="popup-with-form" onSubmit={onSubmit}>
             {children}
+
+            <span className="popup-with-form__server-error">{serverError}</span>
 
             <button className="popup-with-form__submit" type="submit" disabled={!isValid}>{submitText}</button>
 
