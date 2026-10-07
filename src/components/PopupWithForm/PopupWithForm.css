@@ -78,6 +78,7 @@
 }
 
 .popup-with-form__field {
+    position: relative;
     width: 100%;
     height: 47px;
     margin-bottom: 31px;
@@ -125,6 +126,18 @@
 
 .popup-with-form__input:focus {
     border-bottom: 1px solid var(--color-black);
+}
+
+.popup-with-form__error {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--color-red);
 }
 
 .popup-with-form__submit {
