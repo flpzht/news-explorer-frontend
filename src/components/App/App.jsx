@@ -12,12 +12,13 @@ import SavedNewsHeader from '@/components/SavedNewsHeader/SavedNewsHeader';
 import Main from '@/components/Main/Main';
 import SavedNews from '@/components/SavedNews/SavedNews';
 import Footer from '@/components/Footer/Footer';
-import PopupWithForm from '@/components/PopupWithForm/PopupWithForm';
+import Login from '@/components/Login/Login';
+import Register from '@/components/Register/Register';
 
 import '@/components/App/App.css'
 
 function App() {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [activePopup, setActivePopup] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(() => Boolean(getTokenFromStorage()));
 
@@ -33,12 +34,16 @@ function App() {
     
   }, []);
 
-  function handlePopupOpen() {
-    setIsPopupOpen(true);
+  function handleOpenLogin() {
+    setActivePopup('login');
   }
 
-  function handlePopupClose() {
-    setIsPopupOpen(false);
+  function handleOpenRegister() {
+    setActivePopup('register');
+  }
+
+  function handleClosePopup() {
+    setActivePopup('');
   }
 
   return (
@@ -49,9 +54,10 @@ function App() {
 
             <Route path="/" element={
               <>
-                <Header onOpenPopup={handlePopupOpen} />
+                <Header onOpenPopup={handleOpenLogin} />
                 <Main />
-                <PopupWithForm isOpen={isPopupOpen} onClose={handlePopupClose} />
+                <Login isOpen={activePopup === 'login'} onClose={handleClosePopup} onSwitch={handleOpenRegister} />
+                <Register isOpen={activePopup === 'register'} onClose={handleClosePopup} onSwitch={handleOpenLogin} />
               </>
             } />
 
