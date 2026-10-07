@@ -1,11 +1,15 @@
+import { usePopupClose } from '@/hooks/usePopupClose';
+
 import '@/components/PopupWithForm/PopupWithForm.css';
 
 function SuccessPopup({ isOpen, onClose, onSwitch }) {
+  const { handleOverlayClick } = usePopupClose(isOpen, onClose);
+
   if (!isOpen) return null;
 
   return (
     <div className="popup-with-form">
-      <div className="popup-with-form__overlay">
+      <div className="popup-with-form__overlay" onMouseDown={handleOverlayClick}>
         <div className="popup-with-form__container">
           <button className="popup-with-form__close-button" type="button" aria-label="Fechar" onClick={onClose} />
 
