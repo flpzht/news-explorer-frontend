@@ -14,6 +14,7 @@ import SavedNews from '@/components/SavedNews/SavedNews';
 import Footer from '@/components/Footer/Footer';
 import Login from '@/components/Login/Login';
 import Register from '@/components/Register/Register';
+import SuccessPopup from '@/components/SuccessPopup/SuccessPopup';
 
 import '@/components/App/App.css'
 
@@ -58,6 +59,7 @@ function App() {
                 <Main />
                 <Login isOpen={activePopup === 'login'} onClose={handleClosePopup} onSwitch={handleOpenRegister} />
                 <Register isOpen={activePopup === 'register'} onClose={handleClosePopup} onSwitch={handleOpenLogin} />
+                <SuccessPopup isOpen={activePopup === 'success'} onClose={handleClosePopup} onSwitch={handleOpenLogin} />
               </>
             } />
 
