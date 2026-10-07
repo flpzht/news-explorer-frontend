@@ -5,7 +5,7 @@ import { useFormWithValidation } from '@/hooks/useFormWithValidation';
 import PopupWithForm from '@/components/PopupWithForm/PopupWithForm';
 
 function Register({ isOpen, onClose, onSwitch }) {
-  const { values, isValid, handleChange, resetForm } = useFormWithValidation();
+  const { values, errors, isValid, handleChange, resetForm } = useFormWithValidation();
 
   useEffect(() => {
     resetForm();
@@ -36,6 +36,7 @@ function Register({ isOpen, onClose, onSwitch }) {
           onChange={handleChange}
           required
         />
+        <span className="popup-with-form__error">{errors.email}</span>
       </label>
 
       <label className="popup-with-form__field"> Senha
@@ -49,6 +50,7 @@ function Register({ isOpen, onClose, onSwitch }) {
           minLength={8}
           required
         />
+        <span className="popup-with-form__error">{errors.password}</span>
       </label>
 
       <label className="popup-with-form__field"> Nome de usuário
@@ -63,6 +65,7 @@ function Register({ isOpen, onClose, onSwitch }) {
           maxLength={30}
           required
         />
+        <span className="popup-with-form__error">{errors.name}</span>
       </label>
     </PopupWithForm>
   );

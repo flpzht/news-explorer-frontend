@@ -5,7 +5,7 @@ import { useFormWithValidation } from '@/hooks/useFormWithValidation';
 import PopupWithForm from '@/components/PopupWithForm/PopupWithForm';
 
 function Login({ isOpen, onClose, onSwitch }) {
-  const { values, isValid, handleChange, resetForm } = useFormWithValidation();
+  const { values, errors, isValid, handleChange, resetForm } = useFormWithValidation();
 
   useEffect(() => {
     resetForm();
@@ -36,6 +36,7 @@ function Login({ isOpen, onClose, onSwitch }) {
           onChange={handleChange}
           required
         />
+        <span className="popup-with-form__error">{errors.email}</span>
       </label>
 
       <label className="popup-with-form__field"> Senha
@@ -48,6 +49,7 @@ function Login({ isOpen, onClose, onSwitch }) {
           onChange={handleChange}
           required
         />
+        <span className="popup-with-form__error">{errors.password}</span>
       </label>
     </PopupWithForm>
   );
