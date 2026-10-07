@@ -95,7 +95,7 @@
 }
 
 .popup-with-form__field:last-of-type {
-    margin-bottom: 39px;
+    margin-bottom: 16px;
 }
 
 .popup-with-form__input {
@@ -137,6 +137,18 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
+    color: var(--color-red);
+}
+
+.popup-with-form__server-error {
+    min-height: 15px;
+    margin-bottom: 8px;
+
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
     color: var(--color-red);
 }
 
