@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 import { useFormWithValidation } from '@/hooks/useFormWithValidation';
 
+import { EMAIL_PATTERN } from '@/utils/constants';
+
 import PopupWithForm from '@/components/PopupWithForm/PopupWithForm';
 
 function Register({ isOpen, onClose, onSwitch, onRegister, serverError }) {
@@ -32,6 +34,7 @@ function Register({ isOpen, onClose, onSwitch, onRegister, serverError }) {
         <input
           className="popup-with-form__input"
           type="email"
+          pattern={EMAIL_PATTERN}
           name="email"
           placeholder="Insira e-mail"
           value={values.email || ''}

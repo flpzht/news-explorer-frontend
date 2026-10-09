@@ -3,3 +3,5 @@ export const VALIDATION_MESSAGES = {
   INVALID_EMAIL: 'Endereço de e-mail inválido',
   TOO_SHORT: 'Mínimo de caracteres:',
 };
+
+export const EMAIL_PATTERN = '[^@ ]+@[^@ ]+[.][^@ ]{2,}';

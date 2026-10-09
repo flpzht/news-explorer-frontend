@@ -7,7 +7,7 @@ function getErrorMessage(input) {
 
   if (validity.valid) return '';
   if (validity.valueMissing) return VALIDATION_MESSAGES.REQUIRED;
-  if (validity.typeMismatch) return VALIDATION_MESSAGES.INVALID_EMAIL;
+  if (validity.typeMismatch || validity.patternMismatch) return VALIDATION_MESSAGES.INVALID_EMAIL;
   if (validity.tooShort) return `${VALIDATION_MESSAGES.TOO_SHORT} ${minLength}`;
 
   return validationMessage;
