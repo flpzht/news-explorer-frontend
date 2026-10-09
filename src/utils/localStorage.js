@@ -16,10 +16,6 @@ export function getSearchFromStorage() {
   }
 }
 
-export function clearSearchFromStorage() {
-  localStorage.removeItem(SEARCH_STORAGE_KEY);
-}
-
 const TOKEN_STORAGE_KEY = 'newsExplorerToken';
 
 export function saveTokenToStorage(token) {
