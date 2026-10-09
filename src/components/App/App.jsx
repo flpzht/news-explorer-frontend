@@ -1,10 +1,11 @@
 import { useState, useEffect, startTransition } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
-import { SavedArticlesProvider } from '@/contexts/SavedArticlesContext';
+import { SavedArticlesContext } from '@/contexts/SavedArticlesContext';
 import { CurrentUserContext } from '@/contexts/CurrentUserContext';
 
-import { getCurrentUser, register, login } from '@/utils/MainApi';
+import { getCurrentUser, register, login, getArticles, saveArticle, deleteArticle } from '@/utils/MainApi';
+import { convertFromSavedArticle, convertToSavedArticle } from '@/utils/articles';
 import { getTokenFromStorage, clearTokenFromStorage, saveTokenToStorage } from '@/utils/localStorage.js';
 
 import Header from '@/components/Header/Header';
@@ -23,6 +24,7 @@ function App() {
   const [activePopup, setActivePopup] = useState('');
   const [serverError, setServerError] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
+  const [savedArticles, setSavedArticles] = useState([]);
   const [isCheckingAuth, setIsCheckingAuth] = useState(() => Boolean(getTokenFromStorage()));
 
   const navigate = useNavigate();
@@ -38,6 +40,14 @@ function App() {
       .finally(() => setIsCheckingAuth(false));
 
   }, []);
+
+  useEffect(() => {
+    if (!currentUser) return;
+
+    getArticles(getTokenFromStorage())
+      .then((articles) => setSavedArticles(articles.map(convertFromSavedArticle)))
+      .catch((err) => console.error(err));
+  }, [currentUser]);
 
   function handleOpenLogin() {
     setServerError('');
@@ -84,13 +94,38 @@ function App() {
     clearTokenFromStorage();
     startTransition(() => {
       setCurrentUser(null);
+      setSavedArticles([]);
       navigate('/');
     });
   }
 
+  function isArticleSaved(article) {
+    return savedArticles.some((saved) => saved.url === article.url);
+  }
+
+  function handleSaveArticle(article, keyword) {
+    saveArticle(getTokenFromStorage(), convertToSavedArticle(article, keyword))
+      .then((newArticle) => {
+        setSavedArticles((state) => [convertFromSavedArticle(newArticle), ...state]);
+      })
+      .catch((err) => console.error(err));
+  }
+
+  function handleRemoveArticle(article) {
+    const savedArticle = savedArticles.find((saved) => saved.url === article.url);
+
+    if (!savedArticle) return;
+
+    deleteArticle(getTokenFromStorage(), savedArticle._id)
+      .then(() => {
+        setSavedArticles((state) => state.filter((saved) => saved._id !== savedArticle._id));
+      })
+      .catch((err) => console.error(err));
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <SavedArticlesProvider>
+      <SavedArticlesContext.Provider value={{ savedArticles, isArticleSaved, saveArticle: handleSaveArticle, removeArticle: handleRemoveArticle, onLoginRequired: handleOpenLogin }}>
         <div className="page">
           <Routes>
 
@@ -115,7 +150,7 @@ function App() {
 
           <Footer />
         </div>
-      </SavedArticlesProvider>
+      </SavedArticlesContext.Provider>
     </CurrentUserContext.Provider>
   )
 }
