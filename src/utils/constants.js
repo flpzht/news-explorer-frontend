@@ -5,3 +5,5 @@ export const VALIDATION_MESSAGES = {
 };
 
 export const EMAIL_PATTERN = '[^@ ]+@[^@ ]+[.][^@ ]{2,}';
+
+export const REQUEST_ERROR_MESSAGE = 'Desculpe, algo deu errado durante a solicitação. Por favor, tente novamente mais tarde.';

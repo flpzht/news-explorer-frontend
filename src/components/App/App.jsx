@@ -17,6 +17,7 @@ import Login from '@/components/Login/Login';
 import Register from '@/components/Register/Register';
 import SuccessPopup from '@/components/SuccessPopup/SuccessPopup';
 import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
+import ErrorPopup from '@/components/ErrorPopup/ErrorPopup';
 
 import '@/components/App/App.css'
 
@@ -46,7 +47,7 @@ function App() {
 
     getArticles(getTokenFromStorage())
       .then((articles) => setSavedArticles(articles.map(convertFromSavedArticle)))
-      .catch((err) => console.error(err));
+      .catch(() => setActivePopup('error'));
   }, [currentUser]);
 
   function handleOpenLogin() {
@@ -108,7 +109,7 @@ function App() {
       .then((newArticle) => {
         setSavedArticles((state) => [convertFromSavedArticle(newArticle), ...state]);
       })
-      .catch((err) => console.error(err));
+      .catch(() => setActivePopup('error'));
   }
 
   function handleRemoveArticle(article) {
@@ -120,7 +121,7 @@ function App() {
       .then(() => {
         setSavedArticles((state) => state.filter((saved) => saved._id !== savedArticle._id));
       })
-      .catch((err) => console.error(err));
+      .catch(() => setActivePopup('error'));
   }
 
   return (
@@ -147,6 +148,8 @@ function App() {
             } />
 
           </Routes>
+
+          <ErrorPopup isOpen={activePopup === 'error'} onClose={handleClosePopup} />
 
           <Footer />
         </div>
