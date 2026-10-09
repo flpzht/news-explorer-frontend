@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, startTransition } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import { SavedArticlesProvider } from '@/contexts/SavedArticlesContext';
@@ -15,6 +15,7 @@ import Footer from '@/components/Footer/Footer';
 import Login from '@/components/Login/Login';
 import Register from '@/components/Register/Register';
 import SuccessPopup from '@/components/SuccessPopup/SuccessPopup';
+import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
 
 import '@/components/App/App.css'
 
@@ -81,8 +82,10 @@ function App() {
 
   function handleSignOut() {
     clearTokenFromStorage();
-    setCurrentUser(null);
-    navigate('/');
+    startTransition(() => {
+      setCurrentUser(null);
+      navigate('/');
+    });
   }
 
   return (
@@ -102,10 +105,10 @@ function App() {
             } />
 
             <Route path="/saved-news" element={
-              <>
+              <ProtectedRoute isCheckingAuth={isCheckingAuth} onUnauthorized={handleOpenLogin}>
                 <SavedNewsHeader onSignOut={handleSignOut} />
                 <SavedNews />
-              </>
+              </ProtectedRoute>
             } />
 
           </Routes>
