@@ -6,7 +6,7 @@ import { EMAIL_PATTERN } from '@/utils/constants';
 
 import PopupWithForm from '@/components/PopupWithForm/PopupWithForm';
 
-function Login({ isOpen, onClose, onSwitch }) {
+function Login({ isOpen, onClose, onSwitch, onLogin, serverError }) {
   const { values, errors, isValid, handleChange, resetForm } = useFormWithValidation();
 
   useEffect(() => {
@@ -15,6 +15,7 @@ function Login({ isOpen, onClose, onSwitch }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    onLogin(values);
   }
 
   return (
@@ -27,6 +28,7 @@ function Login({ isOpen, onClose, onSwitch }) {
       onSubmit={handleSubmit}
       onClose={onClose}
       onSwitch={onSwitch}
+      serverError={serverError}
     >
       <label className="popup-with-form__field"> E-mail
         <input

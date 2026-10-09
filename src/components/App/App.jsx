@@ -4,8 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import { SavedArticlesProvider } from '@/contexts/SavedArticlesContext';
 import { CurrentUserContext } from '@/contexts/CurrentUserContext';
 
-import { getCurrentUser, register } from '@/utils/MainApi';
-import { getTokenFromStorage, clearTokenFromStorage } from '@/utils/localStorage';
+import { getCurrentUser, register, login } from '@/utils/MainApi';
+import { getTokenFromStorage, clearTokenFromStorage, saveTokenToStorage } from '@/utils/localStorage.js';
 
 import Header from '@/components/Header/Header';
 import SavedNewsHeader from '@/components/SavedNewsHeader/SavedNewsHeader';
@@ -27,13 +27,13 @@ function App() {
   useEffect(() => {
     const token = getTokenFromStorage();
 
-    if(!token) return;
+    if (!token) return;
 
     getCurrentUser(token)
-    .then((user) => setCurrentUser(user))
-    .catch(() => clearTokenFromStorage())
-    .finally(() => setIsCheckingAuth(false));
-    
+      .then((user) => setCurrentUser(user))
+      .catch(() => clearTokenFromStorage())
+      .finally(() => setIsCheckingAuth(false));
+
   }, []);
 
   function handleOpenLogin() {
@@ -52,12 +52,30 @@ function App() {
   }
 
   function handleRegister({ email, password, name }) {
-  setServerError('');
+    setServerError('');
 
-  register({ email, password, name })
-    .then(() => setActivePopup('success'))
-    .catch((err) => setServerError(err.message));
-}
+    register({ email, password, name })
+      .then(() => setActivePopup('success'))
+      .catch((err) => setServerError(err.message));
+  }
+
+  function handleLogin({ email, password }) {
+    setServerError('');
+
+    login({ email, password })
+      .then(({ token }) => {
+        saveTokenToStorage(token);
+        return getCurrentUser(token);
+      })
+      .then((user) => {
+        setCurrentUser(user);
+        setActivePopup('');
+      })
+      .catch((err) => {
+        clearTokenFromStorage();
+        setServerError(err.message);
+      });
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -69,7 +87,7 @@ function App() {
               <>
                 <Header onOpenPopup={handleOpenLogin} />
                 <Main />
-                <Login isOpen={activePopup === 'login'} onClose={handleClosePopup} onSwitch={handleOpenRegister} />
+                <Login isOpen={activePopup === 'login'} onClose={handleClosePopup} onSwitch={handleOpenRegister} onLogin={handleLogin} serverError={serverError} />
                 <Register isOpen={activePopup === 'register'} onClose={handleClosePopup} onSwitch={handleOpenLogin} onRegister={handleRegister} serverError={serverError} />
                 <SuccessPopup isOpen={activePopup === 'success'} onClose={handleClosePopup} onSwitch={handleOpenLogin} />
               </>
