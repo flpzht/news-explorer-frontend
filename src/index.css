@@ -25,6 +25,7 @@
   --color-blue-2: #347eff; /* Blue for links and buttons (:hover)*/
   --color-blue-3: #2a65cc; /* Blue for links and buttons (:active)*/
   --color-blue-4: #4983e8; /* Blue for links and buttons (Inscreva-se)*/
+  --color-red: #ff0000; /* Red for form error messages */
 
   /* Fonts */
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;

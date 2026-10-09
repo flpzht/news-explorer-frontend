@@ -1,4 +1,4 @@
-const BASE_URL = 'https://newsapi.org/v2';
+const BASE_URL = import.meta.env.VITE_NEWS_API_URL;
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 function getDateDaysAgo(days) {

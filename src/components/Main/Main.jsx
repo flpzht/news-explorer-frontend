@@ -10,6 +10,18 @@ import About from '@/components/About/About';
 
 import '@/components/Main/Main.css';
 
+function hasRequiredFields(article) {
+  return Boolean(
+    article.title
+    && article.title !== '[Removed]'
+    && article.description
+    && article.url
+    && article.urlToImage
+    && article.publishedAt
+    && article.source?.name,
+  );
+}
+
 function Main() {
   const [searchStatus, setSearchStatus] = useState('idle');
   const [articles, setArticles] = useState([]);
@@ -33,17 +45,18 @@ function Main() {
 
     try {
       const data = await searchNews(searchQuery);
+      const completeArticles = data.articles.filter(hasRequiredFields);
 
-      if (data.articles.length === 0) {
+      if (completeArticles.length === 0) {
         setSearchStatus('empty');
         setArticles([]);
         saveSearchToStorage(searchQuery, []);
         return;
       }
 
-      setArticles(data.articles);
+      setArticles(completeArticles);
       setSearchStatus('success');
-      saveSearchToStorage(searchQuery, data.articles);
+      saveSearchToStorage(searchQuery, completeArticles);
     } catch (err) {
       console.error(err);
       setError('Desculpe, algo deu errado durante a solicitação. Pode haver um problema de conexão ou o servidor pode estar inativo. Por favor, tente novamente mais tarde.');
