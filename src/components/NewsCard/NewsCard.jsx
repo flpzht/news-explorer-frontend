@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
-import { isLoggedIn } from '@/utils/mockAuth.js'; // Simulação do estado de login
-import { SavedArticlesContext } from '@/contexts/SavedArticlesContext.jsx';
+import { CurrentUserContext } from '@/contexts/CurrentUserContext';
+import { SavedArticlesContext } from '@/contexts/SavedArticlesContext';
 import brokeImage from '@/images/broke-image.png';
 
 import '@/components/NewsCard/NewsCard.css';
@@ -16,6 +16,8 @@ function formatDate(dateString) {
 }
 
 function NewsCard({ card, isSavedNewsPage, query }) {
+  const currentUser = useContext(CurrentUserContext);
+  const isLoggedIn = Boolean(currentUser);
   const { isArticleSaved, saveArticle, removeArticle } = useContext(SavedArticlesContext);
   const isSaved = isArticleSaved(card);
 

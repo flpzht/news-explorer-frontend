@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import { SavedArticlesProvider } from '@/contexts/SavedArticlesContext';
 import { CurrentUserContext } from '@/contexts/CurrentUserContext';
@@ -23,6 +23,8 @@ function App() {
   const [serverError, setServerError] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(() => Boolean(getTokenFromStorage()));
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = getTokenFromStorage();
@@ -77,6 +79,12 @@ function App() {
       });
   }
 
+  function handleSignOut() {
+    clearTokenFromStorage();
+    setCurrentUser(null);
+    navigate('/');
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <SavedArticlesProvider>
@@ -85,7 +93,7 @@ function App() {
 
             <Route path="/" element={
               <>
-                <Header onOpenPopup={handleOpenLogin} />
+                <Header onOpenPopup={handleOpenLogin} onSignOut={handleSignOut} />
                 <Main />
                 <Login isOpen={activePopup === 'login'} onClose={handleClosePopup} onSwitch={handleOpenRegister} onLogin={handleLogin} serverError={serverError} />
                 <Register isOpen={activePopup === 'register'} onClose={handleClosePopup} onSwitch={handleOpenLogin} onRegister={handleRegister} serverError={serverError} />
@@ -95,7 +103,7 @@ function App() {
 
             <Route path="/saved-news" element={
               <>
-                <SavedNewsHeader />
+                <SavedNewsHeader onSignOut={handleSignOut} />
                 <SavedNews />
               </>
             } />
