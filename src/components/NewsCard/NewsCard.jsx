@@ -18,7 +18,7 @@ function formatDate(dateString) {
 function NewsCard({ card, isSavedNewsPage, query }) {
   const currentUser = useContext(CurrentUserContext);
   const isLoggedIn = Boolean(currentUser);
-  const { isArticleSaved, saveArticle, removeArticle } = useContext(SavedArticlesContext);
+  const { isArticleSaved, saveArticle, removeArticle, onLoginRequired } = useContext(SavedArticlesContext);
   const isSaved = isArticleSaved(card);
 
   function handleSaveClick() {
@@ -59,7 +59,7 @@ function NewsCard({ card, isSavedNewsPage, query }) {
         <div className="news-card__button-content">
 
           <button className={`news-card__button news-card__button_bookmark ${isLoggedIn && isSaved ? 'news-card__button_bookmark_active' : ''}`}
-            onClick={isLoggedIn ? handleSaveClick : undefined}
+            onClick={isLoggedIn ? handleSaveClick : onLoginRequired}
             type="button" aria-label="Salvar artigo">
           </button>
 
