@@ -7,12 +7,16 @@ import NewsCardList from '@/components/NewsCardList/NewsCardList';
 import '@/components/SavedNews/SavedNews.css';
 
 function getKeywordsText(articles) {
-  const keywords = [...new Set(articles.map((article) => article.keyword).filter(Boolean))];
+  const counts = articles.reduce((acc, article) => {
+    acc[article.keyword] = (acc[article.keyword] || 0) + 1;
+    return acc;
+  }, {});
 
-  if (keywords.length === 0) return '';
-  if (keywords.length <= 2) return keywords.join(', ');
+  const keywords = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
 
-  return `${keywords.slice(0, 2).join(', ')}, e ${keywords.length - 2} outras`;
+  if (keywords.length <= 3) return keywords.join(', ');
+
+  return `${keywords.slice(0, 2).join(', ')}, e mais ${keywords.length - 2}`;
 }
 
 function SavedNews() {
