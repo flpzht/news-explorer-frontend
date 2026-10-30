@@ -1,16 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { isLoggedIn } from '@/utils/mockAuth.js'; // Simulação do estado de login
+import { CurrentUserContext } from '@/contexts/CurrentUserContext';
 
 import logoutIconMain from '@/images/logout-icon-main.svg';
 import logoutIconSavedNews from '@/images/logout-icon-saved-news.svg';
 
 import '@/components/Navigation/Navigation.css';
 
-function Navigation({ onOpenPopup }) {
+function Navigation({ onOpenPopup, onSignOut }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const currentUser = useContext(CurrentUserContext);
+  const isLoggedIn = Boolean(currentUser);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 480px)');
@@ -77,8 +79,8 @@ function Navigation({ onOpenPopup }) {
       )}
 
       {isLoggedIn ? (
-        <button className={`navigation__signout ${location.pathname === '/' ? 'navigation__signout_main' : 'navigation__signout_saved-news'}`} type="button">
-          <p className={`navigation__signout-text ${location.pathname === '/' ? 'navigation__signout_main-text' : 'navigation__signout_saved-news-text'}`}>Elise</p>
+        <button className={`navigation__signout ${location.pathname === '/' ? 'navigation__signout_main' : 'navigation__signout_saved-news'}`} type="button" onClick={() => { onSignOut(); handleCloseMenu(); }}>
+          <p className={`navigation__signout-text ${location.pathname === '/' ? 'navigation__signout_main-text' : 'navigation__signout_saved-news-text'}`}>{currentUser.name}</p>
           <img className="navigation__logout-icon_main" src={location.pathname === '/' ? logoutIconMain : logoutIconSavedNews} alt="Sair" />
         </button>
       ) : (

@@ -39,8 +39,8 @@ function NewsCardList({ isSavedNewsPage, searchStatus, articles, query }) {
       <div className="news-card-list__container">
         {location.pathname === '/' ? <h2 className="news-card-list__title">Procurar resultados</h2> : ''}
         <ul className="news-card-list__items">
-          {visibleArticles.map((article, index) => (
-            <li key={`${article.url}-${index}`} className="news-card-list__item">
+          {visibleArticles.map((article) => (
+            <li key={article.url} className="news-card-list__item">
               <NewsCard card={article} isSavedNewsPage={isSavedNewsPage} query={query} />
             </li>
           ))}

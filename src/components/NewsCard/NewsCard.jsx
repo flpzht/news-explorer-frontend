@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 
-import { isLoggedIn } from '@/utils/mockAuth.js'; // Simulação do estado de login
-import { SavedArticlesContext } from '@/contexts/SavedArticlesContext.jsx';
-import brokeImage from '@/images/broke-image.png';
+import { CurrentUserContext } from '@/contexts/CurrentUserContext';
+import { SavedArticlesContext } from '@/contexts/SavedArticlesContext';
 
 import '@/components/NewsCard/NewsCard.css';
 
@@ -16,7 +15,9 @@ function formatDate(dateString) {
 }
 
 function NewsCard({ card, isSavedNewsPage, query }) {
-  const { isArticleSaved, saveArticle, removeArticle } = useContext(SavedArticlesContext);
+  const currentUser = useContext(CurrentUserContext);
+  const isLoggedIn = Boolean(currentUser);
+  const { isArticleSaved, saveArticle, removeArticle, onLoginRequired } = useContext(SavedArticlesContext);
   const isSaved = isArticleSaved(card);
 
   function handleSaveClick() {
@@ -33,14 +34,14 @@ function NewsCard({ card, isSavedNewsPage, query }) {
 
   return (
     <article className="news-card">
-      <img className="news-card__image" src={card.urlToImage || brokeImage} alt={card.title} />
+      <img className="news-card__image" src={card.urlToImage} alt={card.title} />
 
       <div className="news-card__container">
         <p className="news-card__date">{formatDate(card.publishedAt)}</p>
 
         <div className="news-card__container_content">
           <h3 className="news-card__title">{card.title}</h3>
-          <p className="news-card__description">{card.description || 'Descrição não disponível'}</p>
+          <p className="news-card__description">{card.description}</p>
         </div>
 
         <p className="news-card__source">{card.source?.name}</p>
@@ -57,7 +58,7 @@ function NewsCard({ card, isSavedNewsPage, query }) {
         <div className="news-card__button-content">
 
           <button className={`news-card__button news-card__button_bookmark ${isLoggedIn && isSaved ? 'news-card__button_bookmark_active' : ''}`}
-            onClick={isLoggedIn ? handleSaveClick : undefined}
+            onClick={isLoggedIn ? handleSaveClick : onLoginRequired}
             type="button" aria-label="Salvar artigo">
           </button>
 
