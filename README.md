@@ -48,7 +48,7 @@ VITE_NEWS_API_URL=https://newsapi.org/v2
 VITE_MAIN_API_URL=http://localhost:3000
 ```
 
-> A chave pode ser obtida gratuitamente em [newsapi.org/register](https://newsapi.org/register). Na versão gratuita, as requisições só funcionam a partir de `localhost`. Por isso, em produção, o `VITE_NEWS_API_URL` aponta para o proxy da TripleTen (`https://nomoreparties.co/news/v2`).
+> A chave pode ser obtida gratuitamente em [newsapi.org/register](https://newsapi.org/register). Na versão gratuita, as requisições só funcionam a partir de `localhost`. Por isso, em produção, o `VITE_NEWS_API_URL` aponta para o servidor proxy fornecido pela TripleTen.
 
 O cadastro, o login e os artigos salvos dependem da API rodando localmente na porta 3000. As instruções estão no repositório [news-explorer-backend](https://github.com/flpzht/news-explorer-backend).
 
@@ -60,9 +60,7 @@ npm run dev
 
 ## Status do projeto
 
-Front-end e back-end integrados e publicados. Cadastro, login, rota protegida e artigos salvos funcionam em produção.
-
-Limitação conhecida: em produção, a busca de notícias depende do proxy da TripleTen (`nomoreparties.co`), que não estava respondendo no momento da publicação. Localmente, a busca funciona normalmente com a News API.
+Front-end e back-end integrados e publicados. Busca de notícias, cadastro, login, rota protegida e artigos salvos funcionam em produção.
 
 ## Autor
 
