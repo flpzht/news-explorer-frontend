@@ -118,6 +118,7 @@
     .about__photo {
         flex: 272px 0 0;
         margin-right: 0;
+        max-width: fit-content;
     }
     .about__content {
         padding-top: 0;
